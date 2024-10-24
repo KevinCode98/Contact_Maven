@@ -8,13 +8,17 @@ public class ConsoleScanner {
 
     public static String insertValues(String message, String regex, String error, String menu) {
         ConsolePrinter.printInfo(message);
-        if (regex.isEmpty())
-            return sc.nextLine();
-
         return (scanValidate(regex, () -> {
+            if(!menu.isEmpty())
+                ConsolePrinter.printInfoLn(menu);
+
             ConsolePrinter.printInfoAndWaitForReturn(error);
-            ConsolePrinter.printInfoLn(menu);
         }));
+    }
+
+    public static String insertString(String message) {
+        ConsolePrinter.printInfo(message);
+        return sc.nextLine();
     }
 
     private static String scanValidate(String regex, Runnable invalidAction) {
