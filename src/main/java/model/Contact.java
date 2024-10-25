@@ -1,47 +1,67 @@
 package model;
 
 import constants.Constants;
+import utils.DateUtil;
 
-public class Contact implements Constants {
-    private String name;
-    private String surname;
-    private String number;
+import java.time.Instant;
 
-    public Contact(String name, String surname, String number) {
+public abstract class Contact implements Constants {
+    protected String name;
+    protected String number;
+    final protected boolean isPerson;
+    final protected Instant createdAt;
+    protected Instant updatedAt;
+
+    public Contact(String name, String number, boolean isPerson) {
         this.name = name;
-        this.surname = surname;
-        this.number = (number == null || number.trim().isEmpty()) ? "[no number]" : number;
+        this.number = (number == null || number.trim().isEmpty())
+                ? Constants.NO_NUMBER
+                : number;
+        this.isPerson = isPerson;
+        this.createdAt = Instant.now();
+        this.updatedAt = Instant.now();
     }
 
     public String getName() {
         return name;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
     public String getPhone() {
         return number;
     }
 
-    public String editName(String name) {
-        this.name = name;
-        return UPDATE_USER;
+    public String getNumber() {
+        return number;
     }
 
-    public String editSurname(String surname) {
-        this.surname = surname;
-        return UPDATE_USER;
+    public String getCreatedAt() {
+        return DateUtil.formatModelTimestamp(createdAt);
+    }
+
+    public String getUpdatedAt() {
+        return DateUtil.formatModelTimestamp(updatedAt);
+    }
+
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public boolean isPerson() {
+        return isPerson;
+    }
+
+    public String editName(String name) {
+        this.name = name;
+        return Constants.UPDATE_CONTACT;
     }
 
     public String editPhone(String number) {
         if (number.isEmpty()) {
-            this.number = NO_NUMBER;
-            return WRONG_PHONE;
+            this.number = Constants.NO_NUMBER;
+            return Constants.WRONG_PHONE;
         } else {
             this.number = number;
-            return UPDATE_USER;
+            return Constants.UPDATE_CONTACT;
         }
     }
 }

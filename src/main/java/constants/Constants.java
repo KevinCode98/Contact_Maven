@@ -3,13 +3,25 @@ package constants;
 public interface Constants {
     String MENU = "Enter action (add, remove, edit, count, list, exit): ";
 
-    String SHOW_CONTACTS = "%d. %s %s, %s";
+    String MENU_CONTACT_TYPE = "Enter the type (person, organization): ";
 
-    String INPUT_NAME = "Enter the name of the person: ";
+    String SHOW_CONTACTS = "%d. %s %s";
+
+    String INPUT_NAME = "Enter the name: ";
+
+    String INPUT_NAME_ORGANIZATION = "Enter the organization name: ";
 
     String INPUT_SURNAME = "Enter the surname of the person: ";
 
     String INPUT_PHONE = "Enter the number: ";
+
+    String INPUT_GENDER = "Enter the gender (M, F): ";
+
+    String INPUT_BIRTHDAY = "Enter the birth date: ";
+
+    String INPUT_ADDRESS = "Enter the address: ";
+
+    String INPUT_GENERAL = "Enter the %s: ";
 
     String SELECT_RECORD = "Select a record: ";
 
@@ -23,15 +35,21 @@ public interface Constants {
 
     String WRONG_PHONE = "Wrong number format!";
 
-    String UPDATE_USER = "The record updated!";
+    String UPDATE_CONTACT = "The record updated!";
 
     String INVALID = "Invalid";
 
     String NAME = "name";
 
+    String ADDRESS = "address";
+
     String SURNAME = "surname";
 
     String NUMBER = "number";
+
+    String BIRTH = "birth";
+
+    String GENDER = "gender";
 
     String ADD = "add";
 
@@ -41,13 +59,17 @@ public interface Constants {
 
     String COUNT = "count";
 
-    String LIST = "list";
+    String INFO = "info";
 
     String EXIT = "exit";
 
+    String PERSON = "person";
+
+    String ORGANIZATION = "organization";
+
     String EMPTY = "";
 
-    String SCAPE = "\n";
+    String NEWLINE = "\n";
 
     String REGEX_NUMBER = "^\\+?([\\da-zA-Z]{1,}[\\s-]?)?(\\([\\da-zA-Z]{2,}(\\)[\\s-]|\\)$))?([\\da-zA-Z]{2,}[\\s-]?)*([\\da-zA-Z]{2,})?$";
 
@@ -57,5 +79,25 @@ public interface Constants {
 
     String NO_NUMBER = "[no number]";
 
-    String VALUES_TO_UPDATE = "Select a field (name, surname, number): ";
+    String NO_DATA = "[no data]";
+
+    String VALUES_TO_UPDATE_PEOPLE = "Select a field (name, surname, birth, gender, number): ";
+
+    String VALUES_TO_UPDATE_ORGANIZATION = "Select a field (address, number): ";
+
+    String FORMAT_PERSON = """
+            Name: %s
+            Surname: %s
+            Birth date: %s
+            Gender: %s
+            Number: %s
+            Time created: %s
+            Time last edit: %s""";
+
+    String FORMAT_ORGANIZATION = """
+            Organization name: %s
+            Address: %s
+            Number: %s
+            Time created: %s
+            Time last edit: %s""";
 }
